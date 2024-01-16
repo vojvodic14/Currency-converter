@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="card">
+      <h1 style="text-align: center; color: darkblue; font-weight: bold">
+        Konvertor valuta
+      </h1>
+
+      <div class="iznos">
+        <input type="number" id="iznos" value="100" />
+      </div>
+      <div class="detalji">
+        <div class="col">
+          <select id="valutaOne"></select>
+        </div>
+
+        <div class="col">
+          <select id="valutaTwo"></select>
+        </div>
+      </div>
+      <button id="btn">Pretvori</button>
+      <div class="result"></div>
+    </div>
+
+    <script>
+      let iznos = document.getElementById("iznos");
+      let valutaOne = document.getElementById("valutaOne");
+      let valutaTwo = document.getElementById("valutaTwo");
+      let btn = document.querySelector("#btn");
+      let result = document.querySelector(".result");
+      let apiKey = "7bcfdafa13c4b91ef074c94d";
+      let api = `https://v6.exchangerate-api.com/v6/${apiKey}/latest/USD`;
+
+      let codes = [
+        "USD",
+        "AUD",
+        "BGN",
+        "CAD",
+        "CHF",
+        "CNY",
+        "EGP",
+        "EUR",
+        "GBP",
+        "RSD",
+        "CZK",
+      ];
+      codes.forEach((cod) => {
+        const option = document.createElement("option");
+        option.value = cod;
+        option.text = cod;
+        valutaOne.add(option);
+      });
+      codes.forEach((cod) => {
+        const option = document.createElement("option");
+        option.value = cod;
+        option.text = cod;
+        valutaTwo.add(option);
+      });
+      valutaOne.value = ["EUR"];
+      valutaTwo.value = ["RSD"];
+      let Konvertor = () => {
+        const iznos = document.getElementById("iznos").value;
+        const fromCurrency = valutaOne.value;
+        const toCurrency = valutaTwo.value;
+        if (iznos.length !== 0) {
+          fetch(api)
+            .then((resp) => resp.json())
+            .then((data) => {
+              let fromZamena = data.conversion_rates[fromCurrency];
+              let toZamena = data.conversion_rates[toCurrency];
+              const rezultat = (iznos / fromZamena) * toZamena;
+              result.innerHTML = `${iznos} ${fromCurrency} = ${rezultat.toFixed(
+                2
+              )}`;
+            })
+            .catch((erorr) => {
+              console.error("Konzola greska", error);
+            });
+        } else {
+          alert("Unesite ponovo podatke");
+        }
+      };
+      document.getElementById("btn").addEventListener("click", Konvertor);
+    </script>
+  </body>
+</html>

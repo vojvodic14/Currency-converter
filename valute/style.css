@@ -1,0 +1,79 @@
+.card {
+  width: 90%;
+  max-width: 470px;
+  background: linear-gradient(135deg, red, yellow);
+
+  margin: 100px auto 0;
+  border-radius: 20px;
+  padding: 40px 35px;
+}
+.iznos {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#iznos {
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 12pt;
+}
+.iznos input {
+  width: 300px;
+  padding: 20px, 40px;
+  margin-right: 100px;
+  height: 35px;
+  border-radius: 30px;
+  margin-left: 80px;
+}
+* {
+  font-family: sans-serif;
+  box-sizing: border-box;
+}
+.card label {
+  text-align: left;
+  color: white;
+  font-family: sans-serif;
+  font-weight: bold;
+}
+.detalji {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+  justify-content: space-between;
+  padding: 40px;
+}
+.card button {
+  height: 50px;
+  width: 100%;
+  border-radius: 30px;
+  border: 0.2rem solid black;
+  background-color: darkblue;
+  color: aliceblue;
+  font-weight: bold;
+}
+body {
+  background-color: greenyellow;
+}
+.col select {
+  height: 35px;
+  font-family: "Courier New", Courier, monospace;
+  background-color: darkblue;
+  color: aliceblue;
+}
+.result {
+  text-align: center;
+  background-color: darkblue;
+  color: white;
+  font-family: sans-serif;
+  font-weight: bold;
+  margin-top: 15px;
+  border-radius: 30px;
+  border: 0.2rem solid black;
+}
+select {
+  color: white;
+  font-family: sans-serif;
+  font-weight: bold;
+  width: 140px;
+}
